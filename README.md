@@ -1,0 +1,1 @@
+# Quin AI - GTM Template

@@ -1,6 +1,9 @@
 homepage: "https://www.quinengine.com/"
 documentation: "https://www.quinengine.com//documentation"
 versions:
+  # Latest version
+  - sha: e5a4ff17e45d7fac509a3ddf7bc927353b205c7e
+    changeNotes: Update categories
+  # Older versions
   - sha: b42ba00f0bb06a9c0b075f8562208d513fc25e77
     changeNotes: Initial release.
-    

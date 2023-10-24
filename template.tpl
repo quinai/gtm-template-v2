@@ -186,7 +186,7 @@ const log = require('logToConsole');
 const callInWindow = require('callInWindow'); // Call function in window api
 
 const Event = data.Event;
-if(Event === 'pageView'){
+if(Event === 'pageview'){
    let GPVData = {};
    GPVData.category = data.PVCategory;
    GPVData.label = data.Label;

@@ -39,7 +39,7 @@ ___TEMPLATE_PARAMETERS___
     "macrosInSelect": false,
     "selectItems": [
       {
-        "value": "pageView",
+        "value": "pageview",
         "displayValue": "Page view"
       },
       {
@@ -79,7 +79,7 @@ ___TEMPLATE_PARAMETERS___
     "enablingConditions": [
       {
         "paramName": "Event",
-        "paramValue": "pageView",
+        "paramValue": "pageview",
         "type": "EQUALS"
       }
     ],
@@ -93,7 +93,7 @@ ___TEMPLATE_PARAMETERS___
     "enablingConditions": [
       {
         "paramName": "Event",
-        "paramValue": "pageView",
+        "paramValue": "pageview",
         "type": "EQUALS"
       }
     ]

@@ -200,7 +200,7 @@ if(Event === 'pageview'){
         discountPrice: data.ItemDiscountPrice,
     };
    }
-    callInWindow( 'geralt' , 'track', 'pageview', GPVData); // Send event
+    callInWindow( 'geralt' , 'track', ['pageview', GPVData]); // Send event
 }
 log('data =', data);
 
@@ -227,6 +227,9 @@ ___WEB_PERMISSIONS___
           }
         }
       ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
     },
     "isRequired": true
   },

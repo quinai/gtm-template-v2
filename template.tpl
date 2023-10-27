@@ -57,15 +57,15 @@ ___TEMPLATE_PARAMETERS___
     "selectItems": [
       {
         "value": "home",
-        "displayValue": "Home Page"
+        "displayValue": "Home"
       },
       {
         "value": "listing",
-        "displayValue": "Listing Page"
+        "displayValue": "Listing"
       },
       {
         "value": "detail",
-        "displayValue": "Detail Page"
+        "displayValue": "Detail"
       },
       {
         "value": "checkout",
@@ -76,27 +76,13 @@ ___TEMPLATE_PARAMETERS___
         "displayValue": "Cart"
       }
     ],
-    "enablingConditions": [
-      {
-        "paramName": "Event",
-        "paramValue": "pageview",
-        "type": "EQUALS"
-      }
-    ],
     "simpleValueType": true
   },
   {
     "type": "TEXT",
     "name": "Label",
     "displayName": "Label",
-    "simpleValueType": true,
-    "enablingConditions": [
-      {
-        "paramName": "Event",
-        "paramValue": "pageview",
-        "type": "EQUALS"
-      }
-    ]
+    "simpleValueType": true
   },
   {
     "type": "TEXT",
@@ -107,6 +93,11 @@ ___TEMPLATE_PARAMETERS___
       {
         "paramName": "PVCategory",
         "paramValue": "detail",
+        "type": "EQUALS"
+      },
+      {
+        "paramName": "PVCategory",
+        "paramValue": "cart",
         "type": "EQUALS"
       }
     ]
@@ -121,6 +112,11 @@ ___TEMPLATE_PARAMETERS___
         "paramName": "PVCategory",
         "paramValue": "detail",
         "type": "EQUALS"
+      },
+      {
+        "paramName": "PVCategory",
+        "paramValue": "cart",
+        "type": "EQUALS"
       }
     ]
   },
@@ -133,6 +129,11 @@ ___TEMPLATE_PARAMETERS___
       {
         "paramName": "PVCategory",
         "paramValue": "detail",
+        "type": "EQUALS"
+      },
+      {
+        "paramName": "PVCategory",
+        "paramValue": "cart",
         "type": "EQUALS"
       }
     ]
@@ -147,6 +148,11 @@ ___TEMPLATE_PARAMETERS___
         "paramName": "PVCategory",
         "paramValue": "detail",
         "type": "EQUALS"
+      },
+      {
+        "paramName": "PVCategory",
+        "paramValue": "cart",
+        "type": "EQUALS"
       }
     ]
   },
@@ -159,6 +165,11 @@ ___TEMPLATE_PARAMETERS___
       {
         "paramName": "PVCategory",
         "paramValue": "detail",
+        "type": "EQUALS"
+      },
+      {
+        "paramName": "PVCategory",
+        "paramValue": "cart",
         "type": "EQUALS"
       }
     ]
@@ -173,6 +184,11 @@ ___TEMPLATE_PARAMETERS___
         "paramName": "PVCategory",
         "paramValue": "detail",
         "type": "EQUALS"
+      },
+      {
+        "paramName": "PVCategory",
+        "paramValue": "cart",
+        "type": "EQUALS"
       }
     ]
   }
@@ -181,29 +197,30 @@ ___TEMPLATE_PARAMETERS___
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
-// Enter your template code here.
 const log = require('logToConsole');
-const callInWindow = require('callInWindow'); // Call function in window api
+const callInWindow = require('callInWindow'); // Call function in window API
 
 const Event = data.Event;
-if(Event === 'pageview'){
-   let GPVData = {};
-   GPVData.category = data.PVCategory;
-   GPVData.label = data.Label;
-   if(data.PVCategory === 'detail'){
-    GPVData.item = {
-        id: data.ItemId,
-        name: data.ItemName,
-        category: data.ItemCategory,
-        currency: data.ItemCurrency,
-        price: data.ItemPrice,
-        discountPrice: data.ItemDiscountPrice,
-    };
-   }
-    callInWindow('geralt.track', "pageview", GPVData); // Send event
-}
-log('data =', data);
 
+if (Event === 'pageview' || Event === 'click') {
+  const GPVData = {
+    category: data.PVCategory,
+    label: data.Label,
+  };
+
+  if (data.PVCategory === 'detail' || data.PVCategory === 'cart') {
+    GPVData.item = {
+      id: data.ItemId,
+      name: data.ItemName,
+      category: data.ItemCategory,
+      currency: data.ItemCurrency,
+      price: data.ItemPrice,
+      discountPrice: data.ItemDiscountPrice,
+    };
+  }
+
+  callInWindow('geralt.track', Event, GPVData); // Send event
+}
 
 // Call data.gtmOnSuccess when the tag is finished.
 data.gtmOnSuccess();
@@ -227,6 +244,9 @@ ___WEB_PERMISSIONS___
           }
         }
       ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
     },
     "isRequired": true
   },
@@ -273,7 +293,7 @@ ___WEB_PERMISSIONS___
                   },
                   {
                     "type": 8,
-                    "boolean": true
+                    "boolean": false
                   },
                   {
                     "type": 8,
@@ -312,7 +332,7 @@ ___WEB_PERMISSIONS___
                   },
                   {
                     "type": 8,
-                    "boolean": true
+                    "boolean": false
                   },
                   {
                     "type": 8,
@@ -325,6 +345,9 @@ ___WEB_PERMISSIONS___
         }
       ]
     },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
     "isRequired": true
   }
 ]
@@ -332,7 +355,10 @@ ___WEB_PERMISSIONS___
 
 ___TESTS___
 
-scenarios: []
+scenarios:
+- name: Quick Test
+  code: runCode();
+setup: ''
 
 
 ___NOTES___

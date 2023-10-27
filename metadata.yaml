@@ -8,7 +8,7 @@ versions:
   - sha: fa1c9467ad2bf9e4cec4c29ef482c70f1ce86504
     changeNotes: Update sending event
   - sha: 4aeadf5587ba5c2510e6f40dad2833f95eb73dfa
-  changeNotes: Update event name
+    changeNotes: Update event name
   - sha: 78af4beb5660c5f4be67a6a40a208f2b76f26033
     changeNotes: Update event field
   - sha: 4072030906bcae042cc1bcec772e825f08e600a2

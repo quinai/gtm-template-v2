@@ -200,7 +200,7 @@ if(Event === 'pageview'){
         discountPrice: data.ItemDiscountPrice,
     };
    }
-    callInWindow( 'geralt' , 'track', ['pageview', GPVData]); // Send event
+    callInWindow('geralt.track', "pageview", GPVData); // Send event
 }
 log('data =', data);
 
@@ -227,9 +227,6 @@ ___WEB_PERMISSIONS___
           }
         }
       ]
-    },
-    "clientAnnotations": {
-      "isEditedByUser": true
     },
     "isRequired": true
   },
@@ -283,14 +280,50 @@ ___WEB_PERMISSIONS___
                     "boolean": true
                   }
                 ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "geralt.track"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
               }
             ]
           }
         }
       ]
-    },
-    "clientAnnotations": {
-      "isEditedByUser": true
     },
     "isRequired": true
   }

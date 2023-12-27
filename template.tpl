@@ -94,11 +94,6 @@ ___TEMPLATE_PARAMETERS___
         "paramName": "PVCategory",
         "paramValue": "detail",
         "type": "EQUALS"
-      },
-      {
-        "paramName": "PVCategory",
-        "paramValue": "cart",
-        "type": "EQUALS"
       }
     ]
   },
@@ -111,11 +106,6 @@ ___TEMPLATE_PARAMETERS___
       {
         "paramName": "PVCategory",
         "paramValue": "detail",
-        "type": "EQUALS"
-      },
-      {
-        "paramName": "PVCategory",
-        "paramValue": "cart",
         "type": "EQUALS"
       }
     ]
@@ -130,11 +120,6 @@ ___TEMPLATE_PARAMETERS___
         "paramName": "PVCategory",
         "paramValue": "detail",
         "type": "EQUALS"
-      },
-      {
-        "paramName": "PVCategory",
-        "paramValue": "cart",
-        "type": "EQUALS"
       }
     ]
   },
@@ -147,11 +132,6 @@ ___TEMPLATE_PARAMETERS___
       {
         "paramName": "PVCategory",
         "paramValue": "detail",
-        "type": "EQUALS"
-      },
-      {
-        "paramName": "PVCategory",
-        "paramValue": "cart",
         "type": "EQUALS"
       }
     ]
@@ -166,11 +146,6 @@ ___TEMPLATE_PARAMETERS___
         "paramName": "PVCategory",
         "paramValue": "detail",
         "type": "EQUALS"
-      },
-      {
-        "paramName": "PVCategory",
-        "paramValue": "cart",
-        "type": "EQUALS"
       }
     ]
   },
@@ -184,11 +159,28 @@ ___TEMPLATE_PARAMETERS___
         "paramName": "PVCategory",
         "paramValue": "detail",
         "type": "EQUALS"
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
+    "name": "customAttributes",
+    "displayName": "Custom Attributes",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "totalbasketsize",
+        "displayName": "Total Basket Size",
+        "simpleValueType": true,
+        "canBeEmptyString": true
       },
       {
-        "paramName": "PVCategory",
-        "paramValue": "cart",
-        "type": "EQUALS"
+        "type": "TEXT",
+        "name": "discountcode",
+        "displayName": "Discount Code",
+        "simpleValueType": true,
+        "canBeEmptyString": true
       }
     ]
   }
@@ -208,7 +200,7 @@ if (Event === 'pageview' || Event === 'click') {
     label: data.Label,
   };
 
-  if (data.PVCategory === 'detail' || data.PVCategory === 'cart') {
+  if (data.PVCategory === 'detail') {
     GPVData.item = {
       id: data.ItemId,
       name: data.ItemName,
@@ -218,7 +210,19 @@ if (Event === 'pageview' || Event === 'click') {
       discountPrice: data.ItemDiscountPrice,
     };
   }
+  
+  if (data.totalbasketsize !== '' || data.discountcode !== '') {
+    GPVData.customAttributes = {};
+  }
 
+  if (data.totalbasketsize !== '') {
+    GPVData.customAttributes.totalbasketsize = data.totalbasketsize;
+  }
+
+  if (data.discountcode !== '') {
+    GPVData.customAttributes.discountcode = data.discountcode;
+  }
+  
   callInWindow('geralt.track', Event, GPVData); // Send event
 }
 

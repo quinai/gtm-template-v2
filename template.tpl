@@ -190,7 +190,8 @@ ___TEMPLATE_PARAMETERS___
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 const log = require('logToConsole');
-const callInWindow = require('callInWindow'); // Call function in window API
+const copyFromWindow = require('copyFromWindow');
+const Object = require('Object');
 
 const Event = data.Event;
 
@@ -211,7 +212,7 @@ if (Event === 'pageview' || Event === 'click') {
     };
   }
   
-  if (data.totalbasketsize !== '' || data.discountcode !== '') {
+  if (data.discountcode !== '' || data.totalbasketsize !== '') {
     GPVData.customAttributes = {};
   }
 
@@ -222,8 +223,9 @@ if (Event === 'pageview' || Event === 'click') {
   if (data.discountcode !== '') {
     GPVData.customAttributes.discountcode = data.discountcode;
   }
-  
-  callInWindow('geralt.track', Event, GPVData); // Send event
+
+  var geralt = copyFromWindow('geralt.track');
+  geralt(Event, GPVData);
 }
 
 // Call data.gtmOnSuccess when the tag is finished.
@@ -297,7 +299,7 @@ ___WEB_PERMISSIONS___
                   },
                   {
                     "type": 8,
-                    "boolean": false
+                    "boolean": true
                   },
                   {
                     "type": 8,
@@ -336,7 +338,7 @@ ___WEB_PERMISSIONS___
                   },
                   {
                     "type": 8,
-                    "boolean": false
+                    "boolean": true
                   },
                   {
                     "type": 8,

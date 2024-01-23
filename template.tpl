@@ -181,6 +181,18 @@ ___TEMPLATE_PARAMETERS___
         "displayName": "Discount Code",
         "simpleValueType": true,
         "canBeEmptyString": true
+      },
+      {
+        "type": "TEXT",
+        "name": "countrycode",
+        "displayName": "Country",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "currency",
+        "displayName": "Currency",
+        "simpleValueType": true
       }
     ]
   }
@@ -212,7 +224,12 @@ if (Event === 'pageview' || Event === 'click') {
     };
   }
   
-  if (data.discountcode !== '' || data.totalbasketsize !== '') {
+  if (
+    data.discountcode !== '' || 
+    data.totalbasketsize !== '' || 
+    data.currency !== '' || 
+    data.countrycode
+  ) {
     GPVData.customAttributes = {};
   }
 

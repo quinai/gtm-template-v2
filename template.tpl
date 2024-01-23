@@ -181,6 +181,20 @@ ___TEMPLATE_PARAMETERS___
         "displayName": "Discount Code",
         "simpleValueType": true,
         "canBeEmptyString": true
+      },
+      {
+        "type": "TEXT",
+        "name": "currency",
+        "displayName": "Currency",
+        "simpleValueType": true,
+        "canBeEmptyString": true
+      },
+      {
+        "type": "TEXT",
+        "name": "countrycode",
+        "displayName": "Country Code",
+        "simpleValueType": true,
+        "canBeEmptyString": true
       }
     ]
   }

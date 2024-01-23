@@ -2,9 +2,11 @@ homepage: "https://www.quinengine.com/"
 documentation: "https://quin-ai-8475c3c234c395ebf401aa43e015ca2.webflow.io/documentation"
 versions:
   # Latest version
+  - sha: 57d4986e2160213f0956b8cad3eee5c18d6ec10e
+    changeNotes: Update Custom Attributes Fields
+  # Older versions
   - sha: 9ea1dd8b4300887f5424b99acebeee6684ef28f8
     changeNotes: Update GTM Methods and Permissions
-  # Older versions
   - sha: 4e4b4d109ab5d0285a76b9db6ab9d8d2859263f5
     changeNotes: Update event fields (custom attributes)
   - sha: df6b8ccc197b65cd160533ccce3169855481cc79

@@ -181,20 +181,6 @@ ___TEMPLATE_PARAMETERS___
         "displayName": "Discount Code",
         "simpleValueType": true,
         "canBeEmptyString": true
-      },
-      {
-        "type": "TEXT",
-        "name": "currency",
-        "displayName": "Currency",
-        "simpleValueType": true,
-        "canBeEmptyString": true
-      },
-      {
-        "type": "TEXT",
-        "name": "countrycode",
-        "displayName": "Country Code",
-        "simpleValueType": true,
-        "canBeEmptyString": true
       }
     ]
   }
@@ -236,6 +222,14 @@ if (Event === 'pageview' || Event === 'click') {
 
   if (data.discountcode !== '') {
     GPVData.customAttributes.discountcode = data.discountcode;
+  }
+  
+  if (data.countrycode !== '') {
+    GPVData.customAttributes.countrycode = data.countrycode;
+  }
+  
+  if (data.currency !== '') {
+    GPVData.customAttributes.currency = data.currency;
   }
 
   var geralt = copyFromWindow('geralt.track');

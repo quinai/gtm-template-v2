@@ -193,6 +193,12 @@ ___TEMPLATE_PARAMETERS___
         "name": "currency",
         "displayName": "Currency",
         "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "quantity",
+        "simpleValueType": true,
+        "displayName": "Quantity"
       }
     ]
   }
@@ -247,6 +253,10 @@ if (Event === 'pageview' || Event === 'click') {
   
   if (data.currency !== '') {
     GPVData.customAttributes.currency = data.currency;
+  }
+  
+  if (data.quantity !== '') {
+    GPVData.customAttributes.quantity = data.quantity;
   }
 
   var geralt = copyFromWindow('geralt.track');

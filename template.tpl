@@ -210,6 +210,7 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 const log = require('logToConsole');
 const copyFromWindow = require('copyFromWindow');
 const Object = require('Object');
+const makeString = require('makeString');
 
 const Event = data.Event;
 
@@ -234,30 +235,31 @@ if (Event === 'pageview' || Event === 'click') {
     data.discountcode !== '' || 
     data.totalbasketsize !== '' || 
     data.currency !== '' || 
-    data.countrycode
+    data.countrycode !== '' ||
+    data.quantity !== ''
   ) {
     GPVData.customAttributes = {};
   }
 
-  if (data.totalbasketsize !== '') {
+  if (data.totalbasketsize !== '' && data.totalbasketsize !== undefined) {
     GPVData.customAttributes.totalbasketsize = data.totalbasketsize;
   }
 
-  if (data.discountcode !== '') {
+  if (data.discountcode !== '' && data.discountcode !== undefined) {
     GPVData.customAttributes.discountcode = data.discountcode;
   }
   
-  if (data.countrycode !== '') {
+  if (data.countrycode !== '' && data.countrycode !== undefined) {
     GPVData.customAttributes.countrycode = data.countrycode;
   }
   
-  if (data.currency !== '') {
+  if (data.currency !== '' && data.currency !== undefined) {
     GPVData.customAttributes.currency = data.currency;
   }
   
-  if (data.quantity !== '') {
-    GPVData.customAttributes.quantity = data.quantity;
-  }
+  if (data.quantity !== '' && data.quantity !== undefined) {
+    GPVData.customAttributes.quantity = makeString(data.quantity);
+  }  
 
   var geralt = copyFromWindow('geralt.track');
   geralt(Event, GPVData);

@@ -235,31 +235,30 @@ if (Event === 'pageview' || Event === 'click') {
     data.discountcode !== '' || 
     data.totalbasketsize !== '' || 
     data.currency !== '' || 
-    data.countrycode !== '' ||
-    data.quantity !== ''
+    data.countrycode
   ) {
     GPVData.customAttributes = {};
   }
 
-  if (data.totalbasketsize !== '' && data.totalbasketsize !== undefined) {
-    GPVData.customAttributes.totalbasketsize = data.totalbasketsize;
+  if (data.totalbasketsize !== '') {
+    GPVData.customAttributes.totalbasketsize = makeString(data.totalbasketsize);
   }
 
-  if (data.discountcode !== '' && data.discountcode !== undefined) {
-    GPVData.customAttributes.discountcode = data.discountcode;
+  if (data.discountcode !== '') {
+    GPVData.customAttributes.discountcode = makeString(data.discountcode);
   }
   
-  if (data.countrycode !== '' && data.countrycode !== undefined) {
-    GPVData.customAttributes.countrycode = data.countrycode;
+  if (data.countrycode !== '') {
+    GPVData.customAttributes.countrycode = makeString(data.countrycode);
   }
   
-  if (data.currency !== '' && data.currency !== undefined) {
-    GPVData.customAttributes.currency = data.currency;
+  if (data.currency !== '') {
+    GPVData.customAttributes.currency = makeString(data.currency);
   }
   
-  if (data.quantity !== '' && data.quantity !== undefined) {
+  if (data.quantity !== '') {
     GPVData.customAttributes.quantity = makeString(data.quantity);
-  }  
+  }
 
   var geralt = copyFromWindow('geralt.track');
   geralt(Event, GPVData);

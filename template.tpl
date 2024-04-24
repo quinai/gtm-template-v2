@@ -240,23 +240,23 @@ if (Event === 'pageview' || Event === 'click') {
     GPVData.customAttributes = {};
   }
 
-  if (data.totalbasketsize !== '') {
+  if (data.totalbasketsize !== '' && data.totalbasketsize !== undefined) {
     GPVData.customAttributes.totalbasketsize = makeString(data.totalbasketsize);
   }
 
-  if (data.discountcode !== '') {
+  if (data.discountcode !== '' && data.discountcode !== undefined) {
     GPVData.customAttributes.discountcode = makeString(data.discountcode);
   }
   
-  if (data.countrycode !== '') {
+  if (data.countrycode !== '' && data.countrycode !== undefined) {
     GPVData.customAttributes.countrycode = makeString(data.countrycode);
   }
   
-  if (data.currency !== '') {
+  if (data.currency !== '' && data.currency !== undefined) {
     GPVData.customAttributes.currency = makeString(data.currency);
   }
   
-  if (data.quantity !== '') {
+  if (data.quantity !== '' && data.quantity !== undefined) {
     GPVData.customAttributes.quantity = makeString(data.quantity);
   }
 

@@ -2,9 +2,11 @@ homepage: "https://www.quinengine.com/"
 documentation: "https://quin-ai-8475c3c234c395ebf401aa43e015ca2.webflow.io/documentation"
 versions:
   # Latest version
+  - sha: 2c33973d462f61a3284dbea7fc68a3adcfdf6b90
+    changeNotes: Fix Custom Fields
+  # Older versions
   - sha: 020b67e150257fb151c9f527ca6d0fcf82688602
     changeNotes: Fix Custom Fields Types
-  # Older versions
   - sha: 3803bf23121115279261ade5b03bf0960d8d757e
     changeNotes: Fix Custom Fields Types
   - sha: 3ed2a1f0224cade27798cda1d38db1b13b7b50ef

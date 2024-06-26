@@ -199,6 +199,12 @@ ___TEMPLATE_PARAMETERS___
         "name": "quantity",
         "simpleValueType": true,
         "displayName": "Quantity"
+      },
+      {
+        "type": "TEXT",
+        "name": "categoryId",
+        "displayName": "Category ID",
+        "simpleValueType": true
       }
     ]
   }
@@ -235,7 +241,9 @@ if (Event === 'pageview' || Event === 'click') {
     data.discountcode !== '' || 
     data.totalbasketsize !== '' || 
     data.currency !== '' || 
-    data.countrycode
+    data.countrycode !== '' ||
+    data.quantity !== '' ||
+    data.categoryId !== ''
   ) {
     GPVData.customAttributes = {};
   }
@@ -258,6 +266,10 @@ if (Event === 'pageview' || Event === 'click') {
   
   if (data.quantity !== '' && data.quantity !== undefined) {
     GPVData.customAttributes.quantity = makeString(data.quantity);
+  }
+
+  if (data.categoryId !== '' && data.categoryId !== undefined) {
+    GPVData.customAttributes.categoryId = makeString(data.categoryId);
   }
 
   var geralt = copyFromWindow('geralt.track');

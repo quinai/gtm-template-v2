@@ -205,6 +205,12 @@ ___TEMPLATE_PARAMETERS___
         "name": "categoryId",
         "displayName": "Category ID",
         "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "isLoggedIn",
+        "displayName": "",
+        "simpleValueType": true
       }
     ]
   }
@@ -243,7 +249,8 @@ if (Event === 'pageview' || Event === 'click') {
     data.currency !== '' || 
     data.countrycode !== '' ||
     data.quantity !== '' ||
-    data.categoryId !== ''
+    data.categoryId !== '' ||
+    data.isLoggedIn !== ''
   ) {
     GPVData.customAttributes = {};
   }
@@ -270,6 +277,10 @@ if (Event === 'pageview' || Event === 'click') {
 
   if (data.categoryId !== '' && data.categoryId !== undefined) {
     GPVData.customAttributes.categoryId = makeString(data.categoryId);
+  }
+  
+  if (data.isLoggedIn !== '' && data.isLoggedIn !== undefined) {
+    GPVData.customAttributes.isLoggedIn = makeString(data.isLoggedIn);
   }
 
   var geralt = copyFromWindow('geralt.track');

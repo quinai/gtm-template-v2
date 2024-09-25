@@ -209,7 +209,7 @@ ___TEMPLATE_PARAMETERS___
       {
         "type": "TEXT",
         "name": "isLoggedIn",
-        "displayName": "",
+        "displayName": "Login Status",
         "simpleValueType": true
       }
     ]

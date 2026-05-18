@@ -177,6 +177,13 @@ ___TEMPLATE_PARAMETERS___
       },
       {
         "type": "TEXT",
+        "name": "totalbasketquantity",
+        "displayName": "Total Basket Quantity",
+        "simpleValueType": true,
+        "canBeEmptyString": true
+      },
+      {
+        "type": "TEXT",
         "name": "discountcode",
         "displayName": "Discount Code",
         "simpleValueType": true,

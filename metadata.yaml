@@ -2,9 +2,11 @@ homepage: "https://www.quinengine.com/"
 documentation: "https://quin-ai-8475c3c234c395ebf401aa43e015ca2.webflow.io/documentation"
 versions:
   # Latest version
+  - sha: 833b7c7ab1cd3959f4bec3328436d0c9704fdf16
+    changeNotes: Add Total Basket Quantity to Custom Attributes
+  # Older versions
   - sha: 9d0f69febe17120d6d844abd6a6f6e8a9af23416
     changeNotes: Fix naming
-  # Older versions
   - sha: a49e9e1853bc5800320b0895535ad64e8746e4ee
     changeNotes: Add isLoggedIn to Custom Attributes
   - sha: ff914ea8ada96f92b680d00f0a0175d42d1fc0ea

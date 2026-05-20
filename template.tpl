@@ -253,6 +253,7 @@ if (Event === 'pageview' || Event === 'click') {
   if (
     data.discountcode !== '' || 
     data.totalbasketsize !== '' || 
+    data.totalbasketquantity !== '' ||
     data.currency !== '' || 
     data.countrycode !== '' ||
     data.quantity !== '' ||
@@ -264,6 +265,10 @@ if (Event === 'pageview' || Event === 'click') {
 
   if (data.totalbasketsize !== '' && data.totalbasketsize !== undefined) {
     GPVData.customAttributes.totalbasketsize = makeString(data.totalbasketsize);
+  }
+
+  if (data.totalbasketquantity !== '' && data.totalbasketquantity !== undefined) {
+    GPVData.customAttributes.totalbasketquantity = makeString(data.totalbasketquantity);
   }
 
   if (data.discountcode !== '' && data.discountcode !== undefined) {
